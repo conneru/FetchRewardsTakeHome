@@ -1,4 +1,4 @@
-# My submission for the Fetch Rewards Take-Home Exercise
+# My submission for the Fetch Rewards Frontend Take-Home Exercise
 
 ### Make sure your computer has NPM installed then cd into the application folder and run:
 

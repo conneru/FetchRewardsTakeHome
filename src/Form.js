@@ -10,8 +10,8 @@ function Form() {
   const [occupationOptions, setOccuOpts] = useState([]);
   const [stateOptions, setStateOptions] = useState([]);
   const [errors, setErrors] = useState({});
-  let anyErrors = false;
   const [submitted, setSubmitted] = useState(false);
+  let anyErrors = false;
 
   //fetch the required info from Fetch Rewards
   async function fetchData() {
@@ -30,9 +30,9 @@ function Form() {
   //Function for submitting the provided information and error handeling
   async function formSubmit(e) {
     e.preventDefault();
-    //Regex for a valid email address and valid first/last name
-
     let payload = { name, email, password, occupation, state };
+
+    //Regex for a valid email address and valid first/last name
     const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const validName = /^[A-Za-z]+$/;
 
@@ -89,7 +89,7 @@ function Form() {
   return (
     <div id="container">
       <div id="formContainer">
-        {/* Conditional to either show the form or the completed page */}
+        {/* Conditional to either show the form or the submitted page */}
         {!submitted ? (
           <form onSubmit={(e) => formSubmit(e)}>
             <img

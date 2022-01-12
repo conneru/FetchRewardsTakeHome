@@ -67,6 +67,7 @@ function Form() {
       }));
     }
 
+    //if there arent any errors send the the post request
     if (anyErrors === false) {
       let res = await fetch(
         "https://frontend-take-home.fetchrewards.com/form",

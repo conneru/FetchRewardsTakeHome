@@ -40,7 +40,7 @@ function Form() {
       anyErrors = true;
       setErrors((prevErrors) => ({
         ...prevErrors,
-        name: "Please enter a valid first name",
+        name: "Please enter a valid name",
       }));
     }
 
@@ -67,8 +67,21 @@ function Form() {
       }));
     }
 
-    //if there arent any errors send the the post request
+    if (password.length < 5) {
+      anyErrors = true;
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        password: "Password must be longer than 5 characters",
+      }));
+    } else if (password.length > 22) {
+      anyErrors = true;
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        password: "Password must be shorter than 23 characters",
+      }));
+    }
     if (anyErrors === false) {
+      //if there arent any errors send the the post request
       let res = await fetch(
         "https://frontend-take-home.fetchrewards.com/form",
         {
@@ -96,7 +109,6 @@ function Form() {
               src="https://www.fetchrewards.com/assets/images/logos/header-logo.png"
               alt="FetchRewardsLogo"
             ></img>
-
             {/* Full name input */}
             <div className="form-input">
               <input
@@ -114,6 +126,9 @@ function Form() {
                 <span className="content-name">Full Name</span>
               </label>
             </div>
+            {errors.name ? (
+              <span style={{ color: "red" }}>{errors.name}</span>
+            ) : null}
 
             {/* Email input */}
             <div className="form-input">
@@ -132,6 +147,9 @@ function Form() {
                 <span className="content-name">Email</span>
               </label>
             </div>
+            {errors.email ? (
+              <span style={{ color: "red" }}>{errors.email}</span>
+            ) : null}
             {/* Password input */}
             <div className="form-input">
               <input
@@ -149,7 +167,9 @@ function Form() {
                 <span className="content-name">Password</span>
               </label>
             </div>
-
+            {errors.password ? (
+              <span style={{ color: "red" }}>{errors.password}</span>
+            ) : null}
             <label htmlFor="occupation" className="select-label">
               Occupation
             </label>
@@ -172,6 +192,9 @@ function Form() {
                 </option>
               ))}
             </select>
+            {errors.occupation ? (
+              <span style={{ color: "red" }}>{errors.occupation}</span>
+            ) : null}
 
             <label htmlFor="state" className="select-label">
               State
@@ -194,6 +217,9 @@ function Form() {
                 </option>
               ))}
             </select>
+            {errors.state ? (
+              <span style={{ color: "red" }}>{errors.state}</span>
+            ) : null}
             <button type="submit" className="submit-button">
               Submit
             </button>

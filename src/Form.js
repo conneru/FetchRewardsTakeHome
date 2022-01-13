@@ -34,7 +34,7 @@ function Form() {
 
     //Regex for a valid email address and valid first/last name
     const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const validName = /^[A-Za-z]+$/;
+    const validName = /^[A-Za-z ]+$/;
 
     if (!validName.test(name)) {
       anyErrors = true;

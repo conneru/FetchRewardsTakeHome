@@ -161,6 +161,7 @@ function Form() {
                   anyErrors = false;
                 }}
                 className={errors.password ? "error" : ""}
+                type="password"
                 id="password"
               ></input>
               <label htmlFor="password" className="label-name">
